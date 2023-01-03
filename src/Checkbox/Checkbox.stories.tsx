@@ -1,12 +1,12 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 
-import { default as CheckboxInput } from ".";
+import { CheckboxInput } from ".";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
   title: "Components/InputGroup",
   component: CheckboxInput,
-  // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
+  // More on argTypes: https://storybook.js.org/docs/react/C
   argTypes: {},
 } as ComponentMeta<typeof CheckboxInput>;
 

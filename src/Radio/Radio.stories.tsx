@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import { SyntheticEvent } from "react";
 
-import { default as RadioInput } from ".";
+import { RadioInput } from ".";
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
