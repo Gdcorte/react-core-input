@@ -7,6 +7,7 @@ export type {
   SimpleInputInterface,
   ToggleInputEvent,
 } from "./interface";
+export { SimpleLabel } from "./Label";
 export { RadioInput } from "./Radio";
 export type { RadioInputOption, RadioInputProps } from "./Radio";
 export { InputBoxCss, InputCss, InputIconBoxCss } from "./styles";
