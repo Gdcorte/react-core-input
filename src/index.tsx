@@ -11,3 +11,4 @@ export { SimpleLabel } from "./Label";
 export { RadioInput } from "./Radio";
 export type { RadioInputOption, RadioInputProps } from "./Radio";
 export { InputBoxCss, InputCss, InputIconBoxCss } from "./styles";
+export { validPercentage } from "./Validators";
