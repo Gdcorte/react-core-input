@@ -5,7 +5,7 @@ import pkg from './package.json';
 export default [
   {
     input: "src/index.tsx",
-    external: Object.keys(pkg.peerDependencies || {}).concat(['react/jsx-runtime']),
+    external: Object.keys(pkg.peerDependencies || {}).concat(['react/jsx-runtime', '@gdcorte/react-core-icons', '@gdcorte/react-core-theme']),
     plugins: [
       typescript({ tsconfig: "./tsconfig.json" })
     ],
@@ -23,7 +23,7 @@ export default [
     ]
   },
   {
-    input: "dist/esm/types/src/index.d.ts",
+    input: "dist/esm/types/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "es" }],
     plugins: [dts()],
   },
