@@ -35,7 +35,7 @@ export interface ToggleProps extends SimpleInputInterface {
     first: ReactNode;
     second: ReactNode;
   };
-  onToggleCallback?: (event?: ToggleInputEvent) => void;
+  onToggleCallback?: (event: ToggleInputEvent) => void;
 }
 
 const Toggle: FunctionComponent<ToggleProps> = ({
