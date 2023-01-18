@@ -1,4 +1,5 @@
 import {
+  ChangeEvent,
   FunctionComponent,
   HTMLAttributes,
   SyntheticEvent,
@@ -24,18 +25,28 @@ const TextArea = styled.textarea`
   border-right: transparent;
 `;
 
-export interface MultilineInputProps extends HTMLAttributes<HTMLInputElement> {
+export interface MultilineInputProps
+  extends HTMLAttributes<HTMLTextAreaElement> {
   minChars?: number;
   maxChars?: number;
+  initialValue?: string;
+  onValueChange?: (_: string) => void;
+  selectOnClick?: boolean;
 }
 
 const MultilineInput: FunctionComponent<MultilineInputProps> = ({
   className,
   maxChars,
   minChars,
+  initialValue,
+  onValueChange,
+  selectOnClick,
+  ...props
 }) => {
   const [rows, setrows] = useState(1);
   const [cols, setcols] = useState(minChars);
+
+  const [inputValue, setinputValue] = useState(initialValue || "");
 
   function resizeInput(event: SyntheticEvent<HTMLTextAreaElement>) {
     const element = event.currentTarget;
@@ -69,13 +80,32 @@ const MultilineInput: FunctionComponent<MultilineInputProps> = ({
     console.warn("here!", text, lineText);
   }
 
+  function handleValueChange(event: ChangeEvent<HTMLTextAreaElement>) {
+    const newInputValue = event.currentTarget.value;
+    setinputValue(newInputValue);
+
+    if (onValueChange) {
+      onValueChange(newInputValue);
+    }
+  }
+
+  function handleInputClick(event: SyntheticEvent<HTMLTextAreaElement>) {
+    if (selectOnClick) {
+      event.currentTarget.select();
+    }
+  }
+
   return (
     <Container className="multiline-input container">
       <TextArea
         className={`multiline-input ${className || ""}`}
         onInput={resizeInput}
+        onChange={handleValueChange}
+        value={inputValue}
         rows={rows}
         cols={cols}
+        onClick={handleInputClick}
+        {...props}
       />
     </Container>
   );
