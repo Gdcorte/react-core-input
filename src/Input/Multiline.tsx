@@ -32,7 +32,7 @@ export interface MultilineInputProps
   initialValue?: string;
   onValueChange?: (_: string) => void;
   selectOnClick?: boolean;
-  ref?: any;
+  inputRef?: any;
 }
 
 const MultilineInput: FunctionComponent<MultilineInputProps> = ({
@@ -42,7 +42,7 @@ const MultilineInput: FunctionComponent<MultilineInputProps> = ({
   initialValue,
   onValueChange,
   selectOnClick,
-  ref,
+  inputRef,
   ...props
 }) => {
   const [rows, setrows] = useState(1);
@@ -99,7 +99,7 @@ const MultilineInput: FunctionComponent<MultilineInputProps> = ({
   return (
     <Container className="multiline-input container">
       <TextArea
-        ref={ref}
+        ref={inputRef}
         className={`multiline-input ${className || ""}`}
         onInput={resizeInput}
         onChange={handleValueChange}
