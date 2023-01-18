@@ -34,7 +34,7 @@ export interface MultilineInputProps
   selectOnClick?: boolean;
   lockValue?: boolean;
   lockedValueChange?: OnChangeSignature;
-  lockedValue: string;
+  lockedValue?: string;
 }
 
 type OnChangeSignature = (_: ChangeEvent<HTMLTextAreaElement>) => void;
