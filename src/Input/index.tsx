@@ -1,3 +1,4 @@
+export { default as MultilineAutoGrowInput } from "./Multiline";
 export { default as PasswordInput } from "./Password";
 export { default as SimpleInput } from "./Simple";
 export { default as ToggleInput } from "./Toggle";
