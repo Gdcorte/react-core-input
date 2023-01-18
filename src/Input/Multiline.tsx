@@ -33,6 +33,8 @@ export interface MultilineInputProps
   onValueChange?: (_: string) => void;
   selectOnClick?: boolean;
   lockValue?: boolean;
+  lockedValueChange?: OnChangeSignature;
+  lockedValue: string;
 }
 
 type OnChangeSignature = (_: ChangeEvent<HTMLTextAreaElement>) => void;
@@ -45,6 +47,8 @@ const MultilineInput: FunctionComponent<MultilineInputProps> = ({
   onValueChange,
   selectOnClick,
   lockValue,
+  lockedValueChange,
+  lockedValue,
   ...props
 }) => {
   const [rows, setrows] = useState(1);
@@ -103,12 +107,8 @@ const MultilineInput: FunctionComponent<MultilineInputProps> = ({
       <TextArea
         className={`multiline-input ${className || ""}`}
         onInput={resizeInput}
-        onChange={
-          lockValue
-            ? (onValueChange as unknown as OnChangeSignature)
-            : handleValueChange
-        }
-        value={lockValue ? initialValue : inputValue}
+        onChange={lockValue ? lockedValueChange : handleValueChange}
+        value={lockValue ? lockedValue : inputValue}
         rows={rows}
         cols={cols}
         onClick={handleInputClick}
