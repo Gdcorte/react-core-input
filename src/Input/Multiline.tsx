@@ -77,7 +77,6 @@ const MultilineInput: FunctionComponent<MultilineInputProps> = ({
 
     setcols(newCols);
     setrows(newRows);
-    console.warn("here!", text, lineText);
   }
 
   function handleValueChange(event: ChangeEvent<HTMLTextAreaElement>) {
