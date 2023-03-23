@@ -5,10 +5,10 @@ import { ErrorSpanCss, InputBoxCss, InputCss } from "../styles";
 
 const InputContainerStyled = styled.div`
   ${InputBoxCss}
-`;
 
-const InputStyled = styled.input`
-  ${InputCss}
+  .input-style {
+    ${InputCss}
+  }
 `;
 
 const SpanStyled = styled.span`
@@ -29,6 +29,7 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
   lockValue,
   selectOnClick,
   label,
+  ...props
 }) => {
   const [validInput, setvalidInput] = useState(true);
   const [currValue, setCurrValue] = useState(useValue || "");
@@ -71,8 +72,8 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
 
   return (
     <InputContainerStyled>
-      <InputStyled
-        className={`InputElement ${className || ""}`}
+      <input
+        className={`input-style InputElement ${className || ""}`}
         disabled={disabled}
         type={type}
         value={disabled || lockValue ? useValue : currValue}
@@ -80,6 +81,7 @@ const SimpleInput: FunctionComponent<SimpleInputInterface> = ({
         autoComplete={autocomplete}
         inputMode={inputmode}
         onClick={handleInputClick}
+        {...props}
       />
       {!validInput && (
         <SpanStyled className={`InputErrorMessage`}>

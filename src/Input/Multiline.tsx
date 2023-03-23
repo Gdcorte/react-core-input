@@ -3,6 +3,7 @@ import {
   FunctionComponent,
   HTMLAttributes,
   SyntheticEvent,
+  useEffect,
   useState,
 } from "react";
 import styled from "styled-components";
@@ -56,9 +57,17 @@ const MultilineInput: FunctionComponent<MultilineInputProps> = ({
 
   const [inputValue, setinputValue] = useState(initialValue || "");
 
-  function resizeInput(event: SyntheticEvent<HTMLTextAreaElement>) {
+  useEffect(() => {
+    lockedValue && resizeInput(lockedValue);
+  }, [lockedValue]);
+
+  function handleOnInput(event: SyntheticEvent<HTMLTextAreaElement>) {
     const element = event.currentTarget;
     const text = element.value;
+    resizeInput(text);
+  }
+
+  function resizeInput(text: string) {
     const lineText = text.split("\n");
 
     let newRows = lineText.length;
@@ -106,7 +115,7 @@ const MultilineInput: FunctionComponent<MultilineInputProps> = ({
     <Container className="multiline-input container">
       <TextArea
         className={`multiline-input ${className || ""}`}
-        onInput={resizeInput}
+        onInput={handleOnInput}
         onChange={lockValue ? lockedValueChange : handleValueChange}
         value={lockValue ? lockedValue : inputValue}
         rows={rows}

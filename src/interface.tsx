@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { HTMLProps, ReactNode } from "react";
 
 export const inputModes = [
   "text",
@@ -15,7 +15,7 @@ export type InputModes = typeof inputModes[number];
 export const inputTypes = ["text", "password", "number", "checkbox"] as const;
 export type InputTypes = typeof inputTypes[number];
 
-export interface SimpleInputInterface {
+export interface SimpleInputInterface extends HTMLProps<HTMLInputElement> {
   useValue?: string;
   onValueChange?: CallableFunction;
   useValidator?: CallableFunction;
